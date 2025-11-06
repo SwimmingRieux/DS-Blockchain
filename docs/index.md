@@ -29,10 +29,13 @@ Welcome! This site is an assignment-first, beginner-friendly guide to building a
   - [FAQ](faq.md)
 
 ## Architecture (simple view)
-```
-+--------------------- Node / Miner ---------------------+
-|  CLI → Parser → Mempool(DAG+RB-trees) → Block Assembler |
-|  → Miner(POW) → Blockchain (Linked List) ↔ UTXO Map     |
-+-------------------------------------------------------+
-```
+<div class="mermaid">
+flowchart TD
+  CLI[CLI Commands] --> Parser
+  Parser --> MP[Mempool\n(DAG + RB-trees)]
+  MP --> Asm[Block Assembler\n(greedy fee/byte + topo order)]
+  Asm --> Miner[Miner (PoW)]
+  Miner --> BC[Blockchain\n(Linked List)]
+  BC <--> UTXO[UTXO Map]
+</div>
 
