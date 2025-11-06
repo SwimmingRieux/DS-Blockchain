@@ -13,7 +13,7 @@ Upon successful completion of this assignment, you will be able to:
 
 ## 🚀 Getting Started
 
-1.  **Familiarize yourself with the concepts:** Before you start coding, make sure you have a solid understanding of the core blockchain primitives. Review the documents in the `concepts` directory to learn about blocks, transactions, Merkle trees, and more.
+1.  **Familiarize yourself with the concepts:** Before you start coding, make sure you have a solid understanding of the core blockchain primitives. Review the [conceptual documents](index.md#learning-materials) to learn about blocks, transactions, Merkle trees, and more.
 2.  **Follow the milestones:** The assignment is broken down into several milestones. Follow the [Milestones & Checklists](milestones.md) to guide your implementation process.
 3.  **Start with the data structures:** Begin by implementing the core data structures, such as the `Block`, `Transaction`, and `Mempool`.
 

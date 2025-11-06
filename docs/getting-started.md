@@ -27,7 +27,7 @@ Before you can create a transaction, you need to understand the UTXO model.
 
 Now, let's create a transaction. For this exercise, you can invent a UTXO that you own.
 
-- **Action:** Create a JSON file that represents a transaction with one input and two outputs (one for the payment and one for the change that comes back to you). Refer to the `spec/json-formats.md` file for the correct format.
+- **Action:** Create a JSON file that represents a transaction with one input and two outputs (one for the payment and one for the change that comes back to you). Refer to the [JSON Formats spec](spec/json-formats.md) for the correct format.
 - **Checkpoint:** Manually calculate the `txid` of your transaction by serializing the transaction data and hashing it with SHA-256.
 
 ## Task 4: Sign the Transaction
