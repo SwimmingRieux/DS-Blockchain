@@ -16,21 +16,21 @@ We maintain two orderings using balanced trees:
 ## Flow: AddTransactionToMempool
 <div class="mermaid">
 flowchart TD
-  A[tx JSON] --> V[Validate\nUTXO exists? pubKey match?\nsignature ok? fee >= 0?]
-  V -->|ok| G[Insert node in DAG\nattach to parents]
-  G --> U[Update aggregates\n(ancestor/descendant)]
-  U --> T[Update RB-trees\n(ancestor & descendant)]
-  T --> O[Print mempool\n(sorted desc by ancestor fee/byte)]
-  V -->|fail| R[Reject]
+  A["tx JSON"] --> V["Validate<br/>UTXO exists? pubKey match?<br/>signature ok? fee >= 0?"]
+  V -- ok --> G["Insert node in DAG<br/>attach to parents"]
+  G --> U["Update aggregates<br/>(ancestor and descendant)"]
+  U --> T["Update RB-trees<br/>(ancestor and descendant)"]
+  T --> O["Print mempool<br/>(sorted descending by ancestor fee per byte)"]
+  V -- fail --> R["Reject"]
 </div>
 
 ## Flow: EvictMempool(x)
 <div class="mermaid">
 flowchart TD
-  X[x] --> P[Pick x least valuable\nby descendant fee/byte]
-  P --> D[Remove chosen txs\nand all their descendants]
-  D --> U[Update aggregates\n& RB-trees]
-  U --> O[Print mempool\n(sorted asc by descendant fee/byte)]
+  X["x"] --> P["Pick x least valuable<br/>by descendant fee per byte"]
+  P --> D["Remove chosen txs<br/>and all their descendants"]
+  D --> U["Update aggregates and RB-trees"]
+  U --> O["Print mempool<br/>(sorted ascending by descendant fee per byte)"]
 </div>
 
 ## Block assembly
