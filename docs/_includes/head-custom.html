@@ -1,5 +1,19 @@
 <script type="module">
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
+  mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', flowchart: { htmlLabels: true } });
+  window.addEventListener('DOMContentLoaded', () => {
+    // Render classic <div class="mermaid"> blocks
+    mermaid.run({ querySelector: '.mermaid' });
+    // Also render fenced code blocks marked as ```mermaid
+    const codeBlocks = document.querySelectorAll('pre code.language-mermaid');
+    codeBlocks.forEach((code) => {
+      const container = document.createElement('div');
+      container.className = 'mermaid';
+      container.innerHTML = code.textContent;
+      const pre = code.parentElement;
+      pre.parentElement.replaceChild(container, pre);
+    });
+    mermaid.run({ querySelector: '.mermaid' });
+  });
   window.mermaid = mermaid;
 </script>

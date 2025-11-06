@@ -14,6 +14,7 @@ We maintain two orderings using balanced trees:
   - Used to remove least valuable transactions (and their descendants); listings are printed in ascending order by this score
 
 ## Flow: AddTransactionToMempool
+{% raw %}
 <div class="mermaid">
 flowchart TD
   A["tx JSON"] --> V["Validate<br/>UTXO exists? pubKey match?<br/>signature ok? fee >= 0?"]
@@ -23,8 +24,10 @@ flowchart TD
   T --> O["Print mempool<br/>(sorted descending by ancestor fee per byte)"]
   V -- fail --> R["Reject"]
 </div>
+{% endraw %}
 
 ## Flow: EvictMempool(x)
+{% raw %}
 <div class="mermaid">
 flowchart TD
   X["x"] --> P["Pick x least valuable<br/>by descendant fee per byte"]
@@ -32,6 +35,7 @@ flowchart TD
   D --> U["Update aggregates and RB-trees"]
   U --> O["Print mempool<br/>(sorted ascending by descendant fee per byte)"]
 </div>
+{% endraw %}
 
 ## Block assembly
 - Greedy selection by ancestor fee per byte up to the fixed block size limit of 2000 bytes (header + txs)

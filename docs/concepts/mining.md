@@ -3,9 +3,10 @@
 After selecting transactions, the miner computes a Merkle root and searches for a nonce so that the block hash has the required number of leading zero bits.
 
 ## Mining flow
+{% raw %}
 <div class="mermaid">
 flowchart TD
-  S1["Start mining"] --> S2["Select txs greedy<br/>by ancestor fee per byte<br/<= 2000 bytes"]
+  S1["Start mining"] --> S2["Select txs greedy<br/>by ancestor fee per byte<br/><= 2000 bytes"]
   S2 --> S3["Include required parents"]
   S3 --> S4["Topological sort"]
   S4 --> S5["Compute txids"]
@@ -18,15 +19,11 @@ flowchart TD
   S8 --> S9["Output block JSON"]
   S9 --> S10["Apply block<br/>update UTXO and clear mined"]
 </div>
+{% endraw %}
 
 ## Why topological order?
 - Children spend parents’ outputs. Putting parents first guarantees inputs are valid when each tx is checked.
 
 ## Difficulty
 - Represented as `leadingZeroBits`
-- Higher number → harder PoW
-
-```
-Select → Topological sort → Merkle root → Nonce search → Block
-```
-
+- Higher number means harder PoW

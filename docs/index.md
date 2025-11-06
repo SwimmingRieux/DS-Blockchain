@@ -29,6 +29,7 @@ Welcome! This site is an assignment-first, beginner-friendly guide to building a
   - [FAQ](faq.md)
 
 ## System flow (end-to-end)
+{% raw %}
 <div class="mermaid">
 flowchart TD
   subgraph CLI["CLI"]
@@ -58,4 +59,5 @@ flowchart TD
 
   A5 --> MP1["Prove/Verify using Merkle root"]
 </div>
+{% endraw %}
 
