@@ -1,25 +1,35 @@
-# Background: Bitcoin vs This Project
+# Background: This Project vs. Bitcoin
 
-This project mirrors the essential ideas of Bitcoin while simplifying many details so they’re easier to learn.
+This project is designed to be a simplified, educational version of a UTXO-based blockchain like Bitcoin. By stripping away some of the complexities of a real-world implementation, you can focus on the core concepts and data structures that make a blockchain work.
 
-## What we keep (core ideas)
-- UTXO model: transactions consume previous outputs and create new ones
-- Input-level signatures: each input proves authorization
-- Fees are implicit: inputs − outputs; miner collects via coinbase
-- Mempool as a dependency structure: parents before children
-- Merkle root in block header; Proof-of-Work mining with a nonce
+This document provides a comparison between the features of this project and those of Bitcoin, and explains the pedagogical reasons for the simplifications we have made.
 
-## What we simplify (on purpose)
-- One public key per participant (no address formats)
-- Outputs store full public keys (not hashes)
-- Fixed block size limit (2300 bytes) rather than dynamic/weight rules
-- No networking: commands via CLI; no peers or propagation
-- No locktime/sequence/version/timestamp; no coinbase maturity
-- No difficulty retargeting and no chain reorgs
+## Feature Comparison
 
-## Why these choices
-- Pedagogy: fewer moving parts → you can focus on core data structures
-- Determinism: easier to test and understand
-- Small sizes: blocks are small, proofs are short, code is simpler
+Here is a side-by-side comparison of the key features of this project and Bitcoin:
 
-After you master this project, you’ll be ready to learn the real-world extensions Bitcoin uses.
+| Feature                  | This Project                                       | Bitcoin                                                              |
+| ------------------------ | -------------------------------------------------- | -------------------------------------------------------------------- |
+| **Accounting Model**     | UTXO Model                                         | UTXO Model                                                           |
+| **Signatures**           | Input-level signatures                             | Input-level signatures                                               |
+| **Fees**                 | Implicit (inputs - outputs)                        | Implicit (inputs - outputs)                                          |
+| **Mempool**              | DAG with parent-child dependencies                 | DAG with parent-child dependencies                                   |
+| **Mining**               | Proof-of-Work with nonce                           | Proof-of-Work with nonce                                             |
+| **Public Keys**          | Full public keys stored in outputs                 | Public key hashes (addresses) stored in outputs                      |
+| **Block Size**           | Fixed limit (2000 bytes)                           | Dynamic weight limit                                                 |
+| **Networking**           | None (CLI-based)                                   | Peer-to-peer network for transaction and block propagation           |
+| **Advanced Features**    | None (no locktime, sequence, version, timestamp)   | Includes locktime, sequence, version, and timestamps                 |
+| **Difficulty Adjustment**| Manual (fixed)                                     | Automatic retargeting every 2016 blocks                              |
+| **Chain Reorganization** | Not handled                                        | Handled (longest chain rule)                                         |
+
+## Why These Simplifications?
+
+The simplifications in this project were made for specific pedagogical reasons:
+
+- **Focus on Core Concepts:** By removing features like networking and dynamic difficulty adjustment, you can focus your attention on the core data structures and algorithms, such as the UTXO set, the mempool, and the block assembly process.
+- **Determinism:** The absence of a network and the use of a fixed difficulty make the system deterministic. This makes it much easier to test your implementation and reason about its behavior.
+- **Simplicity:** A simpler codebase is easier to understand, debug, and complete in a reasonable amount of time.
+
+## A Stepping Stone to the Real World
+
+By mastering the concepts in this project, you will build a strong foundation in the fundamentals of blockchain technology. You will be well-prepared to tackle the more advanced and complex features of real-world blockchains like Bitcoin.

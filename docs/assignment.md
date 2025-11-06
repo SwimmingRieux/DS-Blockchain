@@ -1,45 +1,82 @@
-# Assignment Brief: UTXO Blockchain (Single-Node Miner)
+# Assignment: Build a UTXO Blockchain Node
 
-This assignment guides you to implement a minimal UTXO-based blockchain with a CLI node/miner. It is structured for first-time learners and broken into milestones with checklists.
+This assignment will guide you through the process of implementing a minimal UTXO-based blockchain, complete with a command-line interface (CLI) for interacting with your node and miner. This project is designed for those new to blockchain development and is broken down into manageable milestones.
 
-## Learning objectives
-- Understand UTXO accounting and input-level signatures
-- Build a mempool as a DAG with fee/byte prioritization
-- Assemble blocks greedily under a byte-size limit and mine with PoW
-- Generate and verify Merkle proofs
+## 🎯 Learning Objectives
 
-## What you must build
-1. CLI node that accepts commands:
-   - GiveKeyPair, SetDifficulty, AddTransactionToMempool, EvictMempool, MineBlock, GetMerkleProof, VerifyTxInclusion
-2. Data structures:
-   - Blockchain (linked list), UTXO map, Mempool DAG, two balanced trees for ancestor/descendant scores
-3. Validation rules (must pass):
-   - Inputs reference existing UTXOs, signatures verify, no double-spends, fees ≥ 0, block ≤ 2000 bytes, PoW difficulty satisfied, Merkle root correct
+Upon successful completion of this assignment, you will be able to:
 
-## Constraints (fixed for grading)
-- Block size limit = 2000 bytes (header + all transactions)
-- Hash = SHA-256 (use consistently)
-- Outputs store full public keys (not hashes)
-- No version/timestamp/locktime/sequence; no retargeting; no networking
+- **Understand and implement UTXO accounting:** Grasp the fundamentals of the Unspent Transaction Output (UTXO) model and how to use digital signatures to authorize transactions.
+- **Build a mempool with fee-based prioritization:** Implement a mempool (memory pool) as a Directed Acyclic Graph (DAG) to store unconfirmed transactions, prioritizing them based on their fee-per-byte.
+- **Construct and mine blocks:** Develop a block template by greedily selecting transactions from the mempool, ensuring the block does not exceed a fixed size limit. You will then mine the block using a Proof-of-Work (PoW) algorithm.
+- **Generate and verify Merkle proofs:** Create and validate Merkle proofs to efficiently prove the inclusion of a transaction in a block.
 
-## Deliverables
-- Source code with a README (how to run)
-- A short report (or README section) mapping your code to this spec
-- Demo inputs/outputs: sample tx JSON, mempool listings, and a mined block JSON
+## 🚀 Getting Started
 
-## Milestones
-- See detailed checklists in [Milestones & Checklists](milestones.md)
+1.  **Familiarize yourself with the concepts:** Before you start coding, make sure you have a solid understanding of the core blockchain primitives. Review the documents in the `concepts` directory to learn about blocks, transactions, Merkle trees, and more.
+2.  **Follow the milestones:** The assignment is broken down into several milestones. Follow the [Milestones & Checklists](milestones.md) to guide your implementation process.
+3.  **Start with the data structures:** Begin by implementing the core data structures, such as the `Block`, `Transaction`, and `Mempool`.
 
-## What we will test
-- Correct acceptance/rejection of transactions
-- Correct mempool ordering after add/evict
-- Proper block construction under the size limit
-- Valid PoW and Merkle root
-- Proof verification returns true/false correctly
+## 📋 Assignment Tasks
 
-## Time guidance
-- Total time: ~10–14 hours across 2–3 weeks, depending on experience
-- Recommended pace: 1–2 milestones per study session
+Your primary task is to build a CLI node that can perform the following actions:
+
+- **`GiveKeyPair`:** Generate a new public/private key pair.
+- **`SetDifficulty`:** Set the mining difficulty for the blockchain.
+- **`AddTransactionToMempool`:** Add a new transaction to the mempool.
+- **`EvictMempool`:** Evict transactions from the mempool.
+- **`MineBlock`:** Mine a new block.
+- **`GetMerkleProof`:** Get a Merkle proof for a given transaction.
+- **`VerifyTxInclusion`:** Verify that a transaction is included in a block.
+
+To support this functionality, you will need to implement the following data structures:
+
+- **Blockchain:** A linked list of blocks.
+- **UTXO Map:** A data structure to keep track of the unspent transaction outputs.
+- **Mempool DAG:** A Directed Acyclic Graph to store and manage unconfirmed transactions.
+- **Balanced Trees:** Two balanced trees for ancestor and descendant scores in the mempool.
+
+## ⛓️ Constraints and Rules
+
+To ensure consistency and fair grading, your implementation must adhere to the following constraints:
+
+- **Block Size Limit:** 2000 bytes (including the header and all transactions).
+- **Hash Function:** SHA-256 must be used consistently for all hashing operations.
+- **Public Keys:** Outputs must store full public keys, not hashes of public keys.
+- **Simplifications:** No versioning, timestamps, locktime, or sequence numbers are required. The mining difficulty is fixed and does not need to be retargeted. No networking component is required.
+
+Your implementation must also pass the following validation rules:
+
+- Inputs must reference existing UTXOs.
+- Digital signatures must be valid.
+- No double-spending of UTXOs.
+- Transaction fees must be non-negative (≥ 0).
+- The total block size must not exceed 2000 bytes.
+- The block hash must satisfy the PoW difficulty.
+- The Merkle root in the block header must be correct.
+
+##  deliverables and Evaluation
+
+### Deliverables
+
+- **Source Code:** Your complete source code, along with a `README` file that explains how to compile and run your project.
+- **Report:** A short report (which can be a section in your `README`) that maps your code to the requirements in this specification.
+- **Sample Data:** Sample input and output data, including a sample transaction in JSON format, a listing of your mempool, and a mined block in JSON format.
+
+### Evaluation Criteria
+
+We will test your implementation based on the following criteria:
+
+- Correct acceptance and rejection of transactions.
+- Correct ordering of transactions in the mempool after adding and evicting transactions.
+- Proper construction of blocks that adhere to the size limit.
+- Valid Proof-of-Work and Merkle root.
+- Correct verification of Merkle proofs (returning `true` or `false` as appropriate).
+
+## 🕒 Time Guidance
+
+- **Total Time:** Approximately 10–14 hours, spread across 2–3 weeks, depending on your prior experience.
+- **Recommended Pace:** Aim to complete 1–2 milestones per study session.
 
 ---
 [Back to Index](index.md) · [Next: Milestones & Checklists →](milestones.md)
