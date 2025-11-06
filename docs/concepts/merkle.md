@@ -27,19 +27,19 @@ Here is an example of a Merkle tree with four transactions (A, B, C, and D):
 ```mermaid
 graph TD
     subgraph "Level 2 (Root)"
-        H_ABCD(Merkle Root = H(H_AB + H_CD))
+        H_ABCD("Merkle Root = H(H_AB + H_CD)")
     end
 
     subgraph "Level 1"
-        H_AB(H(txid A + txid B)) --> H_ABCD
-        H_CD(H(txid C + txid D)) --> H_ABCD
+        H_AB("H(txid A + txid B)") --> H_ABCD
+        H_CD("H(txid C + txid D)") --> H_ABCD
     end
 
     subgraph "Level 0 (Leaves)"
-        A(txid A) --> H_AB
-        B(txid B) --> H_AB
-        C(txid C) --> H_CD
-        D(txid D) --> H_CD
+        A("txid A") --> H_AB
+        B("txid B") --> H_AB
+        C("txid C") --> H_CD
+        D("txid D") --> H_CD
     end
 ```
 
@@ -73,19 +73,19 @@ Let's say we want to prove that transaction C is in the block from our previous 
 ```mermaid
 graph TD
     subgraph "Merkle Tree"
-        H_ABCD(Merkle Root)
+        H_ABCD("Merkle Root")
         H_AB --> H_ABCD
         H_CD --> H_ABCD
-        A(txid A) --> H_AB
-        B(txid B) --> H_AB
-        C(txid C) --> H_CD
-        D(txid D) --> H_CD
+        A("txid A") --> H_AB
+        B("txid B") --> H_AB
+        C("txid C") --> H_CD
+        D("txid D") --> H_CD
     end
 
     subgraph "Merkle Proof for txid C"
         direction LR
-        P1(txid D)
-        P2(H_AB)
+        P1("txid D")
+        P2("H_AB")
     end
 
     style C fill:#f9f,stroke:#333,stroke-width:2px

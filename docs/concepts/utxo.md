@@ -47,24 +47,24 @@ When this transaction is included in a block, the UTXO set is updated as follows
 ```mermaid
 graph TD
     subgraph "Transaction 1 (creates initial UTXO)"
-        A[txid: 1, index: 0] --> B{value: 10, publicKey: Alice}
+        A["txid: 1, index: 0"] --> B["{value: 10, publicKey: Alice}"]
     end
 
     subgraph "Transaction 2 (spends the UTXO)"
-        C(Input: txid 1, index 0) --> D{txid: 2}
-        D --> E{Output 0: value: 7, publicKey: Bob}
-        D --> F{Output 1: value: 3, publicKey: Alice (change)}
+        C["Input: txid 1, index 0"] --> D["txid: 2"]
+        D --> E["{Output 0: value: 7, publicKey: Bob}"]
+        D --> F["{Output 1: value: 3, publicKey: Alice (change)}"]
     end
 
     subgraph "Initial UTXO Set"
         direction LR
-        U1(txid: 1, index: 0)
+        U1["txid: 1, index: 0"]
     end
 
     subgraph "Updated UTXO Set"
         direction LR
-        U2(txid: 2, index: 0)
-        U3(txid: 2, index: 1)
+        U2["txid: 2, index: 0"]
+        U3["txid: 2, index: 1"]
     end
 
     C -.-> U1

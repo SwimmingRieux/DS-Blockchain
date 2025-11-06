@@ -15,7 +15,7 @@ A transaction is composed of the following main components:
 ```mermaid
 graph TD
     subgraph "Previous Transaction"
-        PrevTX(txid: ..., outputs: [...])
+        PrevTX("txid: ..., outputs: [...]")
     end
 
     subgraph "Current Transaction"

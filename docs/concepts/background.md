@@ -16,7 +16,7 @@ Here is a side-by-side comparison of the key features of this project and Bitcoi
 | **Mempool**              | DAG with parent-child dependencies                 | DAG with parent-child dependencies                                   |
 | **Mining**               | Proof-of-Work with nonce                           | Proof-of-Work with nonce                                             |
 | **Public Keys**          | Full public keys stored in outputs                 | Public key hashes (addresses) stored in outputs                      |
-| **Block Size**           | Fixed limit (2000 bytes)                           | Dynamic weight limit                                                 |
+| **Block Size**           | Fixed limit (2000 bytes)                           | Dynamic weight limit(1 to 4 mb)                                                 |
 | **Networking**           | None (CLI-based)                                   | Peer-to-peer network for transaction and block propagation           |
 | **Advanced Features**    | None (no locktime, sequence, version, timestamp)   | Includes locktime, sequence, version, and timestamps                 |
 | **Difficulty Adjustment**| Manual (fixed)                                     | Automatic retargeting every 2016 blocks                              |
