@@ -13,17 +13,25 @@ We maintain two orderings using balanced trees:
   - score = (fee(tx) + fees(descendants)) / (size(tx) + size(descendants))
   - Used to remove least valuable transactions (and their descendants); listings are printed in ascending order by this score
 
-```
-A --> C
-B --> C
-C --> D
-```
+## Flow: AddTransactionToMempool
+<div class="mermaid">
+flowchart TD
+  A[tx JSON] --> V[Validate\nUTXO exists? pubKey match?\nsignature ok? fee >= 0?]
+  V -->|ok| G[Insert node in DAG\nattach to parents]
+  G --> U[Update aggregates\n(ancestor/descendant)]
+  U --> T[Update RB-trees\n(ancestor & descendant)]
+  T --> O[Print mempool\n(sorted desc by ancestor fee/byte)]
+  V -->|fail| R[Reject]
+</div>
 
-## Updates
-- AddTransactionToMempool: validate, insert node, update ancestor/descendant aggregates, update both trees
-- EvictMempool(x): remove x least valuable by descendant score and their descendants; update structures
-- After Add: print mempool sorted in descending order by ancestor fee per byte
-- After Evict: print mempool sorted in ascending order by descendant fee per byte
+## Flow: EvictMempool(x)
+<div class="mermaid">
+flowchart TD
+  X[x] --> P[Pick x least valuable\nby descendant fee/byte]
+  P --> D[Remove chosen txs\nand all their descendants]
+  D --> U[Update aggregates\n& RB-trees]
+  U --> O[Print mempool\n(sorted asc by descendant fee/byte)]
+</div>
 
 ## Block assembly
 - Greedy selection by ancestor fee per byte up to the fixed block size limit of 2000 bytes (header + txs)

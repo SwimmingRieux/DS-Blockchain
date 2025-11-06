@@ -28,14 +28,34 @@ Welcome! This site is an assignment-first, beginner-friendly guide to building a
 - Support
   - [FAQ](faq.md)
 
-## Architecture (simple view)
+## System flow (end-to-end)
 <div class="mermaid">
 flowchart TD
-  CLI["CLI Commands"] --> Parser["Parser"]
-  Parser --> MP["Mempool<br/>(DAG + RB-trees)"]
-  MP --> Asm["Block Assembler<br/>(greedy fee/byte + topo order)"]
-  Asm --> Miner["Miner (PoW)"]
-  Miner --> BC["Blockchain<br/>(Linked List)"]
-  BC <--> UTXO["UTXO Map"]
+  subgraph CLI[CLI]
+    A1[GiveKeyPair]
+    A2[AddTransactionToMempool]
+    A3[EvictMempool]
+    A4[MineBlock]
+    A5[GetMerkleProof / Verify]
+  end
+
+  A2 --> V1[Validate tx\n- check UTXO exists\n- pubKey match\n- signature ok\n- fee >= 0]
+  V1 -->|ok| M1[Update Mempool\n- add node to DAG\n- update ancestor/descendant aggregates\n- update both RB-trees]
+  V1 -->|fail| R1[Reject + explain]
+  M1 --> O1[Print mempool\n(sorted desc by ancestor fee/byte)]
+
+  A3 --> E1[Evict x least valuable\n(by descendant fee/byte)\n+ their descendants]
+  E1 --> O2[Print mempool\n(sorted asc by descendant fee/byte)]
+
+  A4 --> S1[Select txs greedy\nby ancestor fee/byte\nunder 2000 bytes]
+  S1 --> S2[Ensure parents included]
+  S2 --> S3[Topological sort]
+  S3 --> H1[Compute txids + Merkle root]
+  H1 --> P1[Find nonce (PoW)\nleadingZeroBits]
+  P1 --> B1[Build block JSON]
+  B1 --> U1[Apply block\n- update UTXO map\n- remove mined from mempool]
+  B1 --> O3[Output block JSON]
+
+  A5 --> MP1[Prove/Verify\nusing Merkle root]
 </div>
 

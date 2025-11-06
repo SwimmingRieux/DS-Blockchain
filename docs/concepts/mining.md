@@ -2,13 +2,22 @@
 
 After selecting transactions, the miner computes a Merkle root and searches for a nonce so that the block hash has the required number of leading zero bits.
 
-## Steps
-1. Select transactions greedily by ancestor fee rate up to the fixed block size limit (2000 bytes total including header and all transactions). Always include parents if a child is chosen.
-2. Topologically sort the selected subgraph (parents before children) so validation passes in order.
-3. Compute `txid` for each; build the Merkle tree; set `merkleRoot` in the header.
-4. Iterate `nonce` until `Hash(header)` has ≥ `difficulty.leadingZeroBits` leading zeros.
-5. Create the coinbase paying `subsidy + totalFees` to the miner’s public key.
-6. Apply block: update UTXO set (remove spent, add new), clear mined txs from mempool (and update DAG + trees), advance chain tip.
+## Mining flow
+<div class="mermaid">
+flowchart TD
+  S1[Start mining] --> S2[Select txs greedy\nby ancestor fee/byte\n≤ 2000 bytes]
+  S2 --> S3[Include required parents]
+  S3 --> S4[Topological sort]
+  S4 --> S5[Compute txids]\n
+  S5 --> S6[Build Merkle tree\n→ merkleRoot]
+  S6 --> S7[Assemble header\n(prevHash, merkleRoot, difficulty, nonce)]
+  S7 --> L{hash(header) meets\nleadingZeroBits?}
+  L -- no --> INC[nonce++]
+  INC --> L
+  L -- yes --> S8[Create coinbase\n(subsidy + fees)]
+  S8 --> S9[Output block JSON]
+  S9 --> S10[Apply block\nupdate UTXO + clear mined]
+</div>
 
 ## Why topological order?
 - Children spend parents’ outputs. Putting parents first guarantees inputs are valid when each tx is checked.
