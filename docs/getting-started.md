@@ -1,40 +1,82 @@
-# Getting Started (Lab 0)
+# Getting Started: A Hands-On Introduction
 
-Goal: set up your environment and learn the core flow by running small, verifiable steps.
+This guide provides a hands-on introduction to the core concepts of the blockchain you will be building. By following these steps, you will learn the fundamental workflow of creating a key pair, building a transaction, and mining a block.
 
-## Task A: Generate a keypair
-- Run `GiveKeyPair` and save the output.
-- Checkpoint: you can paste your `publicKey` into outputs later.
+Think of this as "Lab 0" – a practical exercise to complete before you start working on the main assignment milestones.
 
-## Task B: Understand UTXOs
-- Read `concepts/utxo.md`.
-- Draw a small picture of one UTXO you own: `(txid, index, value, publicKey)`.
+## Task 1: Generate a Key Pair
 
-## Task C: Build a sample transaction
-- Start from one UTXO you own (invent one if needed for practice).
-- Create a JSON with 1 input and 2 outputs (pay + change).
-- Check against `spec/json-formats.md`.
-- Checkpoint: compute its txid by serializing then hashing.
+Your first step is to create a public/private key pair. This will be your identity on the blockchain.
 
-## Task D: Sign the preimage
-- Recreate the preimage skeleton (inputs as references, outputs with values and recipients).
-- Sign with your private key; attach `signature` to the input.
-- Checkpoint: tamper with an output value by +1 and observe signature failure.
+- **Action:** Run the `GiveKeyPair` command.
 
-## Task E: Add to mempool
-- `AddTransactionToMempool <tx-json>`
-- Observe the printed order (sorted descending by ancestor fee per byte).
-- Checkpoint: create a child tx that spends the change; add it and confirm the DAG order.
+  ```bash
+  $ ./your-node-program GiveKeyPair
+  ```
 
-## Task F: Mine a block
-- `SetDifficulty 12` (or similar), then `MineBlock`.
-- Checkpoint: verify block JSON—header fields, merkleRoot, nonce; total size ≤ 2000 bytes.
+- **Checkpoint:** The command will output a new key pair. Save this information, as you will need it for the following steps. The `publicKey` is your "address" that you can share with others, while the `privateKey` must be kept secret.
 
-## Task G: Prove inclusion
-- `GetMerkleProof <txid> <height>`, then `VerifyTxInclusion`.
-- Checkpoint: result is `true` for your tx; `false` for a random txid.
+## Task 2: Understand UTXOs
 
-When finished with Lab 0, you can proceed milestone-by-milestone with `milestones.md`. Each milestone has acceptance criteria to help you self-verify your implementation.
+Before you can create a transaction, you need to understand the UTXO model.
 
----
-[Back to Index](index.md) · [← Back: Tests & Example I/O](tests.md) · [Next: Background (Bitcoin vs This Project) →](concepts/background.md)
+- **Action:** Read the [UTXO Model](concepts/utxo.md) documentation.
+- **Checkpoint:** Draw a diagram of a UTXO that you own. It should include the `txid` and `index` (which you can make up for now), the `value`, and your `publicKey` from Task 1.
+
+## Task 3: Build a Sample Transaction
+
+Now, let's create a transaction. For this exercise, you can invent a UTXO that you own.
+
+- **Action:** Create a JSON file that represents a transaction with one input and two outputs (one for the payment and one for the change that comes back to you). Refer to the `spec/json-formats.md` file for the correct format.
+- **Checkpoint:** Manually calculate the `txid` of your transaction by serializing the transaction data and hashing it with SHA-256.
+
+## Task 4: Sign the Transaction
+
+A transaction is not valid until it is signed. The signature proves that you are the owner of the funds being spent.
+
+- **Action:** Create the transaction preimage (the data to be signed) and sign it with your private key. Add the resulting `signature` to the input in your transaction JSON.
+- **Checkpoint:** To understand the importance of the signature, try tampering with your transaction. For example, change the `value` of one of the outputs by one coin. You should observe that if you were to re-verify the signature against this modified transaction, the verification would fail.
+
+## Task 5: Add the Transaction to the Mempool
+
+Once a transaction is created and signed, it is broadcast to the network and added to the mempool.
+
+- **Action:** Use the `AddTransactionToMempool` command to add your transaction to the mempool.
+
+  ```bash
+  $ ./your-node-program AddTransactionToMempool <path-to-your-tx.json>
+  ```
+
+- **Checkpoint:** The command should print the current state of the mempool, sorted by ancestor fee rate. To further your understanding, create a second transaction that spends the change output from your first transaction. Add this "child" transaction to the mempool and observe how the DAG (Directed Acyclic Graph) of dependencies is represented.
+
+## Task 6: Mine a Block
+
+Now it's time to mine a block and include your transaction in it.
+
+- **Action:** First, set the mining difficulty. Then, run the `MineBlock` command.
+
+  ```bash
+  $ ./your-node-program SetDifficulty 12
+  $ ./your-node-program MineBlock
+  ```
+
+- **Checkpoint:** The command will output the newly mined block in JSON format. Inspect the block and verify that the header fields are correct, the `merkleRoot` is valid, and the `nonce` results in a hash that meets the difficulty requirement. Also, check that the total block size is less than or equal to the 2000-byte limit.
+
+## Task 7: Prove Inclusion
+
+The final step is to prove that your transaction is included in the block.
+
+- **Action:** Use the `GetMerkleProof` and `VerifyTxInclusion` commands.
+
+  ```bash
+  $ ./your-node-program GetMerkleProof <txid> <block-height>
+  $ ./your-node-program VerifyTxInclusion <proof-file> <merkle-root>
+  ```
+
+- **Checkpoint:** The `VerifyTxInclusion` command should return `true` for your transaction and `false` for a random, non-existent transaction ID.
+
+## Next Steps
+
+By completing this hands-on introduction, you have gained a practical understanding of the core workflow of your blockchain node. You are now ready to begin the main assignment.
+
+Proceed to the [Milestones & Checklists](milestones.md) to start implementing the features of your blockchain, one step at a time.
