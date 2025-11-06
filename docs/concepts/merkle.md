@@ -97,3 +97,6 @@ To verify the proof, the verifier would perform the following steps:
 2.  Concatenate `txid C` with the first element of the proof (`txid D`) and hash the result to get `H_CD`.
 3.  Concatenate the second element of the proof (`H_AB`) with `H_CD` and hash the result to get `H_ABCD`.
 4.  Compare `H_ABCD` with the Merkle root from the block header. If they match, the proof is valid.
+
+---
+[← Back: Mining](mining.md) · [Next: Digital Signatures and the Transaction Preimage →](signatures-preimage.md)

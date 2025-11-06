@@ -39,3 +39,5 @@ preimage = serialize({
 - Users set a fee by making `sum(outputs) < sum(inputs)`; the difference is the fee
 - Miners collect all fees in the block’s coinbase output
 
+---
+[← Back: Glossary](../concepts/glossary.md) · [Next: CLI Commands →](cli.md)

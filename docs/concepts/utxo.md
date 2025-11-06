@@ -69,3 +69,6 @@ graph TD
 
     C -.-> U1
 ```
+
+---
+[← Back: Transactions](transactions.md) · [Next: The Mempool →](mempool.md)

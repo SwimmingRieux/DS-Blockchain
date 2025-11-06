@@ -89,3 +89,6 @@ An ordering of the nodes in a Directed Acyclic Graph (DAG) such that for every d
 ### UTXO (Unspent Transaction Output)
 
 A discrete amount of cryptocurrency that has been authorized by a sender and can be spent by a receiver. The set of all UTXOs is known as the UTXO set. See [The UTXO Model](utxo.md).
+
+---
+[← Back: Serialization and Hashing](serialization-hashing.md) · [Next: Validation Rules →](../spec/validation.md)

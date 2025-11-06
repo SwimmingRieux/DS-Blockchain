@@ -73,3 +73,6 @@ graph TD
 ## The Importance of the Preimage
 
 The use of a transaction preimage is crucial for ensuring the integrity of the transaction. If an attacker tries to alter any part of the transaction that is included in the preimage (such as the amount of an output or the recipient's public key), the preimage will change. This will cause the digital signature to become invalid, and the transaction will be rejected by the network.
+
+---
+[← Back: Merkle Trees and Proofs](merkle.md) · [Next: Serialization and Hashing →](serialization-hashing.md)

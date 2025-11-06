@@ -78,3 +78,6 @@ graph TD
     E --> B
     B -- No more transactions --> F[Finalize Block]
 ```
+
+---
+[← Back: The UTXO Model](utxo.md) · [Next: Mining →](mining.md)

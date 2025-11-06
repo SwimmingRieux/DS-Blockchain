@@ -5,7 +5,6 @@ Welcome! This site is an assignment-first, beginner-friendly guide to building a
 ## Start here (assignment flow)
 - [Assignment Brief](assignment.md)
 - [Milestones & Checklists](milestones.md)
-- [Grading Rubric & Submission](rubric.md)
 - [Tests & Example I/O](tests.md)
 
 ## Learning materials

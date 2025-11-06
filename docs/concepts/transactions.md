@@ -93,3 +93,6 @@ The coinbase transaction has the following characteristics:
 - **It creates new coins:** The output of the coinbase transaction creates new coins out of thin air. The value of this output is the sum of the block subsidy (a fixed reward for mining the block) and the total transaction fees from all other transactions in the block.
 
 `coinbase output value = block subsidy + total fees`
+
+---
+[← Back: Blockchain Primitives](blockchain-primitives.md) · [Next: The UTXO Model →](utxo.md)

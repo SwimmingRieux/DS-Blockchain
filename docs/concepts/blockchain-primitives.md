@@ -143,3 +143,5 @@ A digital signature is a mathematical scheme for verifying the authenticity of d
 
 In our blockchain, digital signatures are used to authorize the spending of UTXOs. When a user wants to spend a UTXO, they must create a digital signature using their private key. This signature proves that they are the owner of the corresponding public key and that they have authorized the transaction.
 
+---
+[← Back: Background](background.md) · [Next: Transactions →](transactions.md)

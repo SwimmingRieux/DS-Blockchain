@@ -99,3 +99,6 @@ The final milestone is to implement Merkle proofs, which allow for efficient ver
 ## Conclusion
 
 By completing these milestones, you will have built a fully functional, single-node blockchain from the ground up. Congratulations on this significant achievement!
+
+---
+[← Back: Assignment Brief](assignment.md) · [Next: Tests & Example I/O →](tests.md)

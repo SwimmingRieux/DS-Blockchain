@@ -33,3 +33,6 @@ The simplifications in this project were made for specific pedagogical reasons:
 ## A Stepping Stone to the Real World
 
 By mastering the concepts in this project, you will build a strong foundation in the fundamentals of blockchain technology. You will be well-prepared to tackle the more advanced and complex features of real-world blockchains like Bitcoin.
+
+---
+[← Back: Getting Started](../getting-started.md) · [Next: Blockchain Primitives →](blockchain-primitives.md)

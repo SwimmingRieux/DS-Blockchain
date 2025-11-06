@@ -62,3 +62,6 @@ Miners are incentivized to participate in the mining process through the **block
 The total block reward is given to the miner in the coinbase transaction of the block.
 
 `block reward = block subsidy + transaction fees`
+
+---
+[← Back: The Mempool](mempool.md) · [Next: Merkle Trees and Proofs →](merkle.md)

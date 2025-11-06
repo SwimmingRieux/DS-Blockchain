@@ -77,3 +77,6 @@ This total exceeds the 2000-byte block size limit, which shows that a miner must
 ## Why it Matters
 
 The strict rules for serialization and hashing are what make the blockchain secure and immutable. Any tiny change to the data in a block or transaction will result in a completely different hash. This makes it easy to detect any tampering with the data and is a fundamental building block for features like Merkle proofs.
+
+---
+[← Back: Digital Signatures and the Transaction Preimage](signatures-preimage.md) · [Next: Glossary →](glossary.md)

@@ -53,3 +53,6 @@ For the sake of simplicity, this project assumes that each participant uses a si
 ### Why are the diagrams in this documentation rendered with Mermaid?
 
 We use Mermaid to create clear and consistent diagrams that help visualize the concepts explained in the documentation. It is a widely used tool for creating diagrams in Markdown and is well-supported by many platforms.
+
+---
+[← Back: Constant JSON Formats](../spec/json-formats.md) · [Back to Index](../index.md)

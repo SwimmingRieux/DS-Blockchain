@@ -75,8 +75,5 @@ The final step is to prove that your transaction is included in the block.
 
 - **Checkpoint:** The `VerifyTxInclusion` command should return `true` for your transaction and `false` for a random, non-existent transaction ID.
 
-## Next Steps
-
-By completing this hands-on introduction, you have gained a practical understanding of the core workflow of your blockchain node. You are now ready to begin the main assignment.
-
-Proceed to the [Milestones & Checklists](milestones.md) to start implementing the features of your blockchain, one step at a time.
+---
+[← Back: Tests & Example I/O](tests.md) · [Next: Background →](concepts/background.md)

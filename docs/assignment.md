@@ -42,8 +42,6 @@ To ensure consistency and fair grading, your implementation must adhere to the f
 
 - **Block Size Limit:** 2000 bytes (including the header and all transactions).
 - **Hash Function:** SHA-256 must be used consistently for all hashing operations.
-- **Public Keys:** Outputs must store full public keys, not hashes of public keys.
-- **Simplifications:** No versioning, timestamps, locktime, or sequence numbers are required. The mining difficulty is fixed and does not need to be retargeted. No networking component is required.
 
 Your implementation must also pass the following validation rules:
 
@@ -54,29 +52,6 @@ Your implementation must also pass the following validation rules:
 - The total block size must not exceed 2000 bytes.
 - The block hash must satisfy the PoW difficulty.
 - The Merkle root in the block header must be correct.
-
-##  deliverables and Evaluation
-
-### Deliverables
-
-- **Source Code:** Your complete source code, along with a `README` file that explains how to compile and run your project.
-- **Report:** A short report (which can be a section in your `README`) that maps your code to the requirements in this specification.
-- **Sample Data:** Sample input and output data, including a sample transaction in JSON format, a listing of your mempool, and a mined block in JSON format.
-
-### Evaluation Criteria
-
-We will test your implementation based on the following criteria:
-
-- Correct acceptance and rejection of transactions.
-- Correct ordering of transactions in the mempool after adding and evicting transactions.
-- Proper construction of blocks that adhere to the size limit.
-- Valid Proof-of-Work and Merkle root.
-- Correct verification of Merkle proofs (returning `true` or `false` as appropriate).
-
-## 🕒 Time Guidance
-
-- **Total Time:** Approximately 10–14 hours, spread across 2–3 weeks, depending on your prior experience.
-- **Recommended Pace:** Aim to complete 1–2 milestones per study session.
 
 ---
 [Back to Index](index.md) · [Next: Milestones & Checklists →](milestones.md)

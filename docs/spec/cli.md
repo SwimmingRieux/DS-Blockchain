@@ -24,3 +24,5 @@
 ## VerifyTxInclusion txid height proofJson
 - Output: `true` or `false`
 
+---
+[← Back: Validation Rules](validation.md) · [Next: Constant JSON Formats →](json-formats.md)
