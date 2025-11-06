@@ -64,7 +64,7 @@ This document provides a set of tests that you can use to verify that your imple
     {
       "blockHash": "0000...",
       "header": {
-        "prevBlockHash": "000...",
+        "prevBlockHash": "000...", // For the genesis block, this is a string of 64 zeros.,
         "merkleRoot": "def...",
         "difficulty": { "leadingZeroBits": 12 },
         "nonce": 12345

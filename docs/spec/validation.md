@@ -19,7 +19,7 @@
 - Merkle root matches transactions’ `txid`s
 - Proof of Work meets `difficulty.leadingZeroBits`
 - Block size limit: total serialized bytes of header + transactions ≤ 2000 bytes
-- Header `prevBlockHash` equals hash of previous block header
+- Header `prevBlockHash` equals hash of previous block header. For the genesis block, this must be a string of 64 zeros.
 
 ## Mempool admission
 - All transaction rules apply; parents may be unconfirmed but must be present (or referenced) in the mempool

@@ -12,7 +12,7 @@ Miners are the participants in the network who perform the mining process. They 
 The mining process can be broken down into the following steps:
 
 1.  **Select Transactions:** The miner selects a set of transactions from the mempool to include in the new block. This is typically done using a greedy algorithm that prioritizes transactions with the highest fees.
-2.  **Build the Block:** The miner assembles the block, which includes creating the coinbase transaction, building the Merkle tree, and assembling the block header.
+2.  **Build the Block:** The miner assembles the block, which includes creating the coinbase transaction, building the Merkle tree, and assembling the block header. When mining the genesis block, the `prevBlockHash` in the block header is set to a string of 64 zeros.
 3.  **Solve the PoW Puzzle:** The miner then repeatedly hashes the block header, changing a random value called the `nonce` each time, until a hash is found that meets the current mining difficulty.
 4.  **Broadcast the Block:** Once a valid hash is found, the miner broadcasts the new block to the rest of the network.
 

@@ -28,7 +28,7 @@ graph TD
 
 The block header contains metadata about the block.
 
-- **`prevBlockHash` (32 bytes):** A reference to the hash of the previous block in the chain. This is what links the blocks together, forming the blockchain.
+- **`prevBlockHash` (32 bytes):** A reference to the hash of the previous block in the chain. This is what links the blocks together, forming the blockchain. For the genesis block, this value is a string of 64 zeros.
 - **`merkleRoot` (32 bytes):** The root of the Merkle tree of all the transactions in the block. This is a cryptographic hash that allows for efficient verification of the integrity of the transactions.
 - **`difficulty` (1 byte):** A value that determines how hard it is to find a valid hash for the block. This is used in the mining process.
 - **`nonce` (4 bytes):** A random value that miners change in order to find a valid hash for the block that meets the difficulty requirement.

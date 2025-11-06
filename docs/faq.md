@@ -10,7 +10,7 @@ A blockchain is a distributed, immutable ledger that is used to record transacti
 
 ### What is the genesis block?
 
-The genesis block is the very first block in a blockchain. It is the only block that does not have a previous block to reference.
+The genesis block is the very first block in a blockchain. It is the only block that does not have a previous block to reference. Its hash is considered to be a string of 64 zeros.
 
 ## Transactions
 

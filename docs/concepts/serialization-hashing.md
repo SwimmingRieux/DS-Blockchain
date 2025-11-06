@@ -34,7 +34,7 @@ The `blockHash` is the unique identifier for a block. It is calculated by hashin
 
 `blockHash = Hash(serialize(header))`
 
-The block header contains the following fields:
+The block header contains the following fields (for the genesis block, `prevBlockHash` is a string of 64 zeros):
 
 - `prevBlockHash`
 - `merkleRoot`

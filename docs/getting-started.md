@@ -60,6 +60,8 @@ Now it's time to mine a block and include your transaction in it.
   $ ./your-node-program MineBlock
   ```
 
+  (Hint: When you mine your first block, you are creating the genesis block. In this case, you should use a string of 64 zeros for the `prevBlockHash`.)
+
 - **Checkpoint:** The command will output the newly mined block in JSON format. Inspect the block and verify that the header fields are correct, the `merkleRoot` is valid, and the `nonce` results in a hash that meets the difficulty requirement. Also, check that the total block size is less than or equal to the 2000-byte limit.
 
 ## Task 7: Prove Inclusion

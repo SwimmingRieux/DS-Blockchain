@@ -17,7 +17,7 @@
 {
   "blockHash": "hex",
   "header": {
-    "prevBlockHash": "hex",
+    "prevBlockHash": "hex", // For the genesis block, this is a string of 64 zeros.
     "merkleRoot": "hex",
     "difficulty": { "leadingZeroBits": 18 },
     "nonce": 123456
