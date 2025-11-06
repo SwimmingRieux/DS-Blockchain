@@ -31,11 +31,11 @@ Welcome! This site is an assignment-first, beginner-friendly guide to building a
 ## Architecture (simple view)
 <div class="mermaid">
 flowchart TD
-  CLI[CLI Commands] --> Parser
-  Parser --> MP[Mempool\n(DAG + RB-trees)]
-  MP --> Asm[Block Assembler\n(greedy fee/byte + topo order)]
-  Asm --> Miner[Miner (PoW)]
-  Miner --> BC[Blockchain\n(Linked List)]
-  BC <--> UTXO[UTXO Map]
+  CLI["CLI Commands"] --> Parser["Parser"]
+  Parser --> MP["Mempool<br/>(DAG + RB-trees)"]
+  MP --> Asm["Block Assembler<br/>(greedy fee/byte + topo order)"]
+  Asm --> Miner["Miner (PoW)"]
+  Miner --> BC["Blockchain<br/>(Linked List)"]
+  BC <--> UTXO["UTXO Map"]
 </div>
 
