@@ -8,4 +8,10 @@ show_downloads: false
 github:
   is_project_page: true
 
+url: "https://swimmingrieux.github.io"
+baseurl: "/DS-Blockchain"
 
+collections:
+  fa:
+    output: true
+    permalink: /:collection/:path
