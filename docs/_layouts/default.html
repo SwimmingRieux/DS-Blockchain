@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% if page.collection == 'fa' %}
+{% if page.url contains '/fa/' or page.url contains '/fa' %}
 <html lang="fa" dir="rtl">
 {% else %}
 <html lang="{{ site.lang | default: "en-US" }}">
@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v={{ site.github.build_revision }}">
     {% include head-custom.html %}
-    {% if page.collection == 'fa' %}
+    {% if page.url contains '/fa/' or page.url contains '/fa' %}
     <style>
       body {
         direction: rtl;
