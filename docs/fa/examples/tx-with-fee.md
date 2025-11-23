@@ -3,9 +3,9 @@
 فرض کنید شما یک UTXO به میزان 8 واحد در `(txA, 0)` دارید که قابل پرداخت به `publicKey` شما است.
 
 ## 1) ساخت تراکنش
-- ورودی‌ها: `{ prevTxId: txA, prevOutIndex: 0, publicKey: شما, signature: SIG }`
+- ورودی‌ها: `{ prevTxId: txA, prevOutIndex: 0, publicKey: You, signature: SIG }`
 - خروجی‌ها:
-  - 5 ← باب (`publicKeyBob`)
+  - 5 ← Bob (`publicKeyBob`)
   - 2 ← برگشت تغییر به شما (`publicKeyYou`)
 
 ### تصویر اولیه (Preimage)
@@ -36,6 +36,6 @@ graph LR
 ## 4) پس از استخراج بلاک
 - به‌روزرسانی‌های UTXO:
   - حذف `(txA, 0)`
-  - اضافه کردن `(txNew, 0)` ← 5 به باب
-  - اضافه کردن `(txNew, 1)` ← 2 به شما
+  - اضافه کردن `(txNew, 0)` ← 5 به Bob
+  - اضافه کردن `(txNew, 1)` ← 2 به You
 - خروجی کوین‌بیس به میزان کارمزد 1 واحدی شما (به علاوه یارانه و سایر کارمزدها) افزایش می‌یابد.

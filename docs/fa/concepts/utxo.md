@@ -31,37 +31,37 @@
 
 بیایید یک مثال ساده را در نظر بگیریم:
 
--   مجموعه UTXO فعلی شامل یک UTXO است: `{ txid: 1, index: 0, value: 10, publicKey: آلیس }`.
--   آلیس می‌خواهد ۷ سکه به باب ارسال کند.
--   آلیس تراکنشی با یک ورودی (که به UTXO متعلق به او ارجاع می‌دهد) و دو خروجی ایجاد می‌کند:
-    -   خروجی ۰: `value: 7, publicKey: باب`
-    -   خروجی ۱: `value: 3, publicKey: آلیس` (این باقی‌مانده است)
+-   مجموعه UTXO فعلی شامل یک UTXO است: `{ txid: 1, index: 0, value: 10, publicKey: Alice }`.
+-   Alice می‌خواهد ۷ سکه به Bob ارسال کند.
+-   Alice تراکنشی با یک ورودی (که به UTXO متعلق به او ارجاع می‌دهد) و دو خروجی ایجاد می‌کند:
+    -   خروجی ۰: `value: 7, publicKey: Bob`
+    -   خروجی ۱: `value: 3, publicKey: Alice` (این باقی‌مانده است)
 
 هنگامی که این تراکنش در یک بلاک گنجانده می‌شود، مجموعه UTXO به شرح زیر به‌روزرسانی می‌شود:
 
 -   UTXO `{ txid: 1, index: 0 }` حذف می‌شود.
 -   دو UTXO جدید اضافه می‌شوند:
-    -   `{ txid: 2, index: 0, value: 7, publicKey: باب }`
-    -   `{ txid: 2, index: 1, value: 3, publicKey: آلیس }`
+    -   `{ txid: 2, index: 0, value: 7, publicKey: Bob }`
+    -   `{ txid: 2, index: 1, value: 3, publicKey: Alice }`
 
 ```mermaid
 graph TD
-    subgraph "تراکنش 1 (UTXO اولیه را ایجاد می‌کند)"
-        A["txid: 1, index: 0"] --> B["{value: 10, publicKey: آلیس}"]
+    subgraph "Transaction 1 (creates initial UTXO)"
+        A["txid: 1, index: 0"] --> B["{value: 10, publicKey: Alice}"]
     end
 
-    subgraph "تراکنش 2 (UTXO را خرج می‌کند)"
-        C["ورودی: txid 1, index 0"] --> D["txid: 2"]
-        D --> E["{خروجی 0: value: 7, publicKey: باب}"]
-        D --> F["{خروجی 1: value: 3, publicKey: آلیس (باقی‌مانده)}"]
+    subgraph "Transaction 2 (spends the UTXO)"
+        C["Input: txid 1, index 0"] --> D["txid: 2"]
+        D --> E["{Output 0: value: 7, publicKey: Bob}"]
+        D --> F["{Output 1: value: 3, publicKey: Alice (change)}"]
     end
 
-    subgraph "مجموعه UTXO اولیه"
+    subgraph "Initial UTXO Set"
         direction LR
         U1["txid: 1, index: 0"]
     end
 
-    subgraph "مجموعه UTXO به‌روز شده"
+    subgraph "Updated UTXO Set"
         direction LR
         U2["txid: 2, index: 0"]
         U3["txid: 2, index: 1"]
