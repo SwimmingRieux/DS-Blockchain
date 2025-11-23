@@ -66,9 +66,9 @@ A random value that miners change in the block header while searching for a vali
 
 A part of a transaction that creates a new unspent transaction output (UTXO). See [Transactions](transactions.md).
 
-### Preimage
+### Serialization
 
-The specific serialized data that is signed in a transaction to create a digital signature. See [Signatures and the Preimage](signatures-preimage.md).
+The process of converting a data structure into a JSON string for storage or transmission. See [Serialization and Hashing](serialization-hashing.md).
 
 ### Private Key
 

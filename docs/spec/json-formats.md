@@ -22,7 +22,6 @@
     "difficulty": { "leadingZeroBits": 18 },
     "nonce": 123456
   },
-  "sizeBytes": 1234,
   "transactions": [
     {
       "txid": "hex",
@@ -31,8 +30,7 @@
       ],
       "outputs": [
         { "value": 5000, "publicKey": "hex" }
-      ],
-      "sizeBytes": 180
+      ]
     }
   ]
 }
@@ -44,9 +42,9 @@
 {
   "count": 3,
   "txs": [
-    { "txid": "hexA", "ancestorFee": 900, "ancestorSize": 450, "ancestorFeeRate": 2.0 },
-    { "txid": "hexB", "ancestorFee": 400, "ancestorSize": 250, "ancestorFeeRate": 1.6 },
-    { "txid": "hexC", "ancestorFee": 80,  "ancestorSize": 100, "ancestorFeeRate": 0.8 }
+    { "txid": "hexA", "ancestorFee": 900, "ancestorFeeRate": 2.0 },
+    { "txid": "hexB", "ancestorFee": 400, "ancestorFeeRate": 1.6 },
+    { "txid": "hexC", "ancestorFee": 80,  "ancestorFeeRate": 0.8 }
   ]
 }
 ```
@@ -57,8 +55,8 @@
 {
   "count": 2,
   "txs": [
-    { "txid": "hexX", "descendantFee": 70, "descendantSize": 200, "descendantFeeRate": 0.35 },
-    { "txid": "hexY", "descendantFee": 200, "descendantSize": 300, "descendantFeeRate": 0.67 }
+    { "txid": "hexX", "descendantFee": 70, "descendantFeeRate": 0.35 },
+    { "txid": "hexY", "descendantFee": 200, "descendantFeeRate": 0.67 }
   ]
 }
 ```
